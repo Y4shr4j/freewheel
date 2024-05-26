@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.60e02b64.css",
+    "main.js": "/static/js/main.1987d27a.js",
+    "static/media/Background.jpg": "/static/media/Background.e727fa37e3b8594e1d32.jpg",
+    "static/media/blog-3.jpg": "/static/media/blog-3.aa2760f333891cbc3c6a.jpg",
+    "static/media/slider-2.jpg": "/static/media/slider-2.bb3fb87a445f6748ec7f.jpg",
+    "static/media/bike2.jpg": "/static/media/bike2.ba01747dd4d915e325b5.jpg",
+    "static/media/slider-3.jpg": "/static/media/slider-3.b32c8716110102cd7224.jpg",
+    "static/media/drive.jpg": "/static/media/drive.2b4369a70a680bfb102a.jpg",
+    "static/media/bike1.jpg": "/static/media/bike1.ed0b98c678bcb34199f3.jpg",
+    "static/media/remixicon.svg?t=1590207869815": "/static/media/remixicon.9cedd2150922ead84869.svg",
+    "static/media/blog-1.jpg": "/static/media/blog-1.65921966d2a669d116b8.jpg",
+    "static/media/bike2.png": "/static/media/bike2.a1a6ab850430bf6fd0ab.png",
+    "static/media/slider-1.jpg": "/static/media/slider-1.2fe94a0c5bfb0ef21564.jpg",
+    "static/media/PulsarNS200.jpg": "/static/media/PulsarNS200.9d8a99521493bab370ca.jpg",
+    "static/media/blog-2.jpg": "/static/media/blog-2.3716ad053d6eb5dcff8b.jpg",
+    "static/media/Pulsar150.jpg": "/static/media/Pulsar150.393bc94e003259ed88d1.jpg",
+    "static/media/diosportsred.png": "/static/media/diosportsred.71c1e327417d8c2d9d50.png",
+    "static/media/Activa6G.jpg": "/static/media/Activa6G.1366f7941a18a38b9f4c.jpg",
+    "static/media/Activa125.jpg": "/static/media/Activa125.b96f052c4bf5860ad946.jpg",
+    "static/media/remixicon.eot?t=1590207869815": "/static/media/remixicon.5cb99e6cba5a4619063f.eot",
+    "static/media/remixicon.ttf?t=1590207869815": "/static/media/remixicon.f2616f597cf98f38d234.ttf",
+    "static/media/Classic350.jpg": "/static/media/Classic350.4893a877ba4f81ff5736.jpg",
+    "static/media/remixicon.woff?t=1590207869815": "/static/media/remixicon.8d09fa11700ed63cf96e.woff",
+    "static/media/remixicon.woff2?t=1590207869815": "/static/media/remixicon.90668f6f9b3c2c18a090.woff2",
+    "static/media/u.jpg": "/static/media/u.15c3567fa976430503ed.jpg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.60e02b64.css.map": "/static/css/main.60e02b64.css.map",
+    "main.1987d27a.js.map": "/static/js/main.1987d27a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60e02b64.css",
+    "static/js/main.1987d27a.js"
+  ]
+}
