@@ -108,16 +108,16 @@ Open a pull request
 ## Screenshots
 
 ### Home Page
-![Home Page](zip/i (3).png)
+![Home Page](zips/i (3).png)
 
 ### User Panel
-![User Panel](zip/i (1).png)
+![User Panel](zips/i (1).png)
 
 ### Admin Panel
-![Admin Panel](zip/i (10).png)
+![Admin Panel](zips/i (10).png)
 
 ### Vehicle Listing
-![Vehicle Listing](zip/i (7).png)
+![Vehicle Listing](zips/i (7).png)
 
 ### Blogging Feature
-![Blogging Feature](zip/i (17).png)
+![Blogging Feature](zips/i (17).png)
