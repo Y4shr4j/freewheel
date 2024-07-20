@@ -2,9 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
-import authRoutes from "../server/src/routes/authRoute.js";
+import authRoutes from "./src/routes/authRoute.js";
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpec from '../server/swagger.js';
+import swaggerSpec from './swagger.js';
 import categoryRoutes from './src/routes/categoryRoutes.js';
 import productRoutes from './src/routes/productRoutes.js';
 import userRoutes from "./src/routes/userRoutes.js"; // Import user routes
@@ -30,7 +30,7 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Swagger documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
@@ -44,9 +44,9 @@ app.use("/api/v1/blog", blogRoutes);
 app.use("/api/v1/contact", contactRoutes); // Use contact routes
 
 // rest api
-app.use("*", function(req, res){
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// app.use("*", function(req, res){
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.get("/", (req, res) => {
   res.send("<h1>This is server page</h1>");

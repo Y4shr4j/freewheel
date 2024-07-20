@@ -17,37 +17,40 @@ var gateway = new braintree.BraintreeGateway({
   privateKey: process.env.BRAINTREE_PRIVATE_KEY,
 });
 
+
 export const createProductController = async (req, res) => {
   try {
-    const { name, description, startDate, endDate, price, category, quantity, shipping } =
-      req.fields;
+    const { name, description, startDate, endDate, price, category, quantity, shipping } = req.fields;
     const { photo } = req.files;
-    //alidation
-    switch (true) {
-      case !name:
-        return res.status(500).send({ error: "Name is Required" });
-      case !description:
-        return res.status(500).send({ error: "Description is Required" });
-      case !startDate:
-        return res.status(500).send({error: "Start Date is Required" });
-      case !endDate: 
-        return res.status(500).send({ error: "End Date is Required" });
-      case !price:
-        return res.status(500).send({ error: "Price is Required" });
-      case !category:
-        return res.status(500).send({ error: "Category is Required" });
-      case !quantity:
-        return res.status(500).send({ error: "Quantity is Required" });
-      case photo && photo.size > 1000000:
-        return res
-          .status(500)
-          .send({ error: "photo is Required and should be less then 1mb" });
+
+    // Validation
+    if (!name || !description || !startDate || !endDate || !price || !category || !quantity) {
+      return res.status(500).send({ error: "All fields are required." });
     }
-    const products = new productModel({ ...req.fields, slug: slugify(name) });
+    if (photo && photo.size > 3000000) {
+      return res.status(500).send({ error: "Photo should be less than 3MB." });
+    }
     if (photo) {
-      products.photo.data = fs.readFileSync(photo.path);
-      products.photo.contentType = photo.type;
+      const uploadedPhoto = await cloudinary.uploader.upload(photo.path);
+      products.photo = {
+        data: fs.readFileSync(photo.path), // Optional, if you still want binary data
+        contentType: photo.type,
+        url: uploadedPhoto.secure_url,     // Save the Cloudinary URL
+      };
     }
+    
+    // Upload photo to Cloudinary
+    const uploadedPhoto = await cloudinary.uploader.upload(photo.path);
+
+    const products = new productModel({
+      ...req.fields,
+      slug: slugify(name),
+      photo: {
+        data: uploadedPhoto.secure_url,
+        contentType: photo.type,
+      },
+    });
+
     await products.save();
     res.status(201).send({
       success: true,
@@ -58,11 +61,14 @@ export const createProductController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      error,
       message: "Error in creating product",
+      error,
     });
   }
 };
+
+
+
 
 //get all products
 export const getProductController = async (req, res) => {
@@ -111,24 +117,23 @@ export const getSingleProductController = async (req, res) => {
   }
 };
 
-// get photo
 export const productPhotoController = async (req, res) => {
   try {
     const product = await productModel.findById(req.params.pid).select("photo");
     if (product.photo.data) {
-      res.set("Content-type", product.photo.contentType);
-      return res.status(200).send(product.photo.data);
+      res.status(200).json({ url: product.photo.data });
+    } else {
+      res.status(404).send({ success: false, message: "Photo not found." });
     }
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Erorr while getting photo",
+      message: "Error while getting photo",
       error,
     });
   }
 };
-
 // delete controller
 export const deleteProductController = async (req, res) => {
   try {
@@ -147,39 +152,38 @@ export const deleteProductController = async (req, res) => {
   }
 };
 
-// update product
 export const updateProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } =
-      req.fields;
+    const { name, description, price, category, quantity, shipping } = req.fields;
     const { photo } = req.files;
-    //alidation
-    switch (true) {
-      case !name:
-        return res.status(500).send({ error: "Name is Required" });
-      case !description:
-        return res.status(500).send({ error: "Description is Required" });
-      case !price:
-        return res.status(500).send({ error: "Price is Required" });
-      case !category:
-        return res.status(500).send({ error: "Category is Required" });
-      case !quantity:
-        return res.status(500).send({ error: "Quantity is Required" });
-      case photo && photo.size > 1000000:
-        return res
-          .status(500)
-          .send({ error: "photo is Required and should be less then 1mb" });
+
+    // Validation
+    if (!name || !description || !price || !category || !quantity) {
+      return res.status(500).send({ error: "All fields are required." });
+    }
+    if (photo && photo.size > 1000000) {
+      return res.status(500).send({ error: "Photo should be less than 1MB." });
+    }
+    if (photo) {
+      const uploadedPhoto = await cloudinary.uploader.upload(photo.path);
+      updateData.photo = {
+        data: fs.readFileSync(photo.path), // Optional
+        contentType: photo.type,
+        url: uploadedPhoto.secure_url,     // Save the Cloudinary URL
+      };
+    }
+    
+    const updateData = { ...req.fields, slug: slugify(name) };
+
+    if (photo) {
+      const uploadedPhoto = await cloudinary.uploader.upload(photo.path);
+      updateData.photo = {
+        data: uploadedPhoto.secure_url,
+        contentType: photo.type,
+      };
     }
 
-    const products = await productModel.findByIdAndUpdate(
-      req.params.pid,
-      { ...req.fields, slug: slugify(name) },
-      { new: true }
-    );
-    if (photo) {
-      products.photo.data = fs.readFileSync(photo.path);
-      products.photo.contentType = photo.type;
-    }
+    const products = await productModel.findByIdAndUpdate(req.params.pid, updateData, { new: true });
     await products.save();
     res.status(201).send({
       success: true,
@@ -190,8 +194,8 @@ export const updateProductController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
+      message: "Error in updating product",
       error,
-      message: "Error in Updte product",
     });
   }
 };
