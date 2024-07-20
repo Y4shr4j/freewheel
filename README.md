@@ -1,5 +1,11 @@
 # Vehicle Rental System
 
+## Link :  http://yashra4j.vercel.app/
+    To Access All Features Login with
+    
+    user: admin@mail.com
+    password: admin
+
 ## Overview
 
 The Vehicle Rental System is a comprehensive platform where users can buy, sell, and rent vehicles. In addition to vehicle transactions, the platform features a blogging section for users to share and read articles related to vehicles. The system includes distinct user and admin panels, and integrates with Braintree for secure payments.
@@ -63,9 +69,7 @@ The Vehicle Rental System is a comprehensive platform where users can buy, sell,
     cd client 
     npm i
     npm start 
-## Demo
 
-http://yashra4j.vercel.app/
 ## Authors
 
 - [@Y4shr4j](https://www.github.com/Y4shr4j)
