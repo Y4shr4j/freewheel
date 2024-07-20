@@ -11,7 +11,7 @@ const BlogDetails = () => {
   useEffect(() => {
     const getBlog = async () => {
       try {
-        const { data } = await axios.get(`/api/v1/blog/get-blog/${params.slug}`);
+        const { data } = await axios.get(`https://freewheel-emmm.onrender.com/api/v1/blog/get-blog/${params.slug}`);
         setBlog(data?.blog);
       } catch (error) {
         console.log(error);
@@ -43,7 +43,7 @@ const BlogDetails = () => {
           </p>
         </div>
         <img
-          src={`/api/v1/blog/blog-photo/${blog._id}`}
+          src={`https://freewheel-emmm.onrender.com/api/v1/blog/blog-photo/${blog._id}`}
           alt={blog.title}
           className="img-fluid mb-4"
           style={{ width: "100%", height: "auto" }}

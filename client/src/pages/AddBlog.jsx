@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 function CreateBlog() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [description, setDescription] = useState("");
   const [publishDate, setPublishDate] = useState("");
-  const [publisherName, setPublisherName] = useState(""); // New state for publisher name
+  const [publisherName, setPublisherName] = useState("");
 
-  //create blog function
+  // Create blog function
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
@@ -19,9 +19,9 @@ function CreateBlog() {
       blogData.append("title", title);
       blogData.append("description", description);
       blogData.append("publishDate", publishDate);
-      blogData.append("publisherName", publisherName); // Append publisher name to FormData
+      blogData.append("publisherName", publisherName);
       blogData.append("photo", photo);
-      const { data } = await axios.post("/api/v1/blog/create-blog", blogData);
+      const { data } = await axios.post("https://freewheel-emmm.onrender.com/api/v1/blog/create-blog", blogData);
       if (data?.success) {
         toast.success(`Blog "${title}" created successfully`);
         navigate("/blog");
@@ -31,6 +31,15 @@ function CreateBlog() {
     } catch (error) {
       console.log(error);
       toast.error("Failed to create blog. Please try again later.");
+    }
+  };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file.size > 1024 * 1024) { // 1 MB
+      toast.error("Image should be less than or equal to 1 MB");
+    } else {
+      setPhoto(file);
     }
   };
 
@@ -58,17 +67,16 @@ function CreateBlog() {
                 type="file"
                 name="photo"
                 accept="image/*"
-                onChange={(e) => setPhoto(e.target.files[0])}
+                onChange={handlePhotoChange}
                 hidden
               />
             </label>
           </div>
-          {/* <h5>photo should be less than 4mb</h5> */}
           {photo && (
             <div className="mb-3 text-center">
               <img
                 src={URL.createObjectURL(photo)}
-                alt="product_photo"
+                alt="blog_photo"
                 height={"200px"}
                 className="img-fluid img-thumbnail"
               />

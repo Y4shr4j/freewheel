@@ -9,7 +9,7 @@ const Orders = () => {
   const [auth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/orders");
+      const { data } = await axios.get("https://freewheel-emmm.onrender.com/api/v1/auth/orders");
       setOrders(data);
     } catch (error) {
       console.log(error);

@@ -16,27 +16,21 @@ const Home = () => {
         </div>
         <div className="hero__form">
           <Container>
-            <Row className="form__row">
-              <Col lg="4" md="4">
-                <div className="find__cars-left">
-                  <h2>Find your best Ride here</h2>
-                </div>
-              </Col>
-              <Col lg="8" md="8" sm="12">
+              <div className="find__car-form">
                 <FindCarForm />
-              </Col>
-            </Row>
+              </div>
+             
           </Container>
         </div>
       </section>
-      
+
       <AboutSection />
 
-      <section>
+      <section className="mt-4">
         <Container>
           <Row>
-            <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">See our</h6>
+            <Col lg="12" className="mb-3 text-center">
+              <h6 className="section__subtitle">See Our</h6>
               <h2 className="section__title">Popular Services</h2>
             </Col>
             <ServicesList />

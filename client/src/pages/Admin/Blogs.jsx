@@ -10,7 +10,7 @@ const Blogs = () => {
   // Get all blogs
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("/api/v1/blog/get-blog");
+      const { data } = await axios.get("https://freewheel-emmm.onrender.com/api/v1/blog/get-blog");
       setBlogs(data.blogs);
     } catch (error) {
       console.log(error);
@@ -21,7 +21,7 @@ const Blogs = () => {
   // Delete blog
   const deleteBlog = async (id) => {
     try {
-      await axios.delete(`/api/v1/blog/delete-blog/${id}`);
+      await axios.delete(`https://freewheel-emmm.onrender.com/api/v1/blog/delete-blog/${id}`);
       toast.success("Blog deleted successfully");
       setBlogs(blogs.filter(blog => blog._id !== id));
     } catch (error) {
@@ -57,7 +57,7 @@ const Blogs = () => {
                 <Link to={`/blog/${p.slug}`} className="blog-link w-100">
                   <div className="card m-2 shadow-sm" style={{ width: '100%' }}>
                     <img
-                      src={`/api/v1/blog/blog-photo/${p._id}`}
+                      src={`https://freewheel-emmm.onrender.com/api/v1/blog/blog-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       style={{ height: '200px', objectFit: 'cover' }}

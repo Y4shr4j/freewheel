@@ -1,18 +1,19 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import "../../styles/about-section.css";
-import aboutImg from "../../assets/all-images/cars-img/diosportsred.png";
+import aboutImg from "../../assets/all-images/slider-img/Designer (2).jpeg";
 
 const AboutSection = ({ aboutClass }) => {
   return (
     <section
-      className="about__section"
-      style={
-        aboutClass === "aboutPage"
-          ? { marginTop: "0px" }
-          : { marginTop: "280px" }
-      }
-    >
+  className="about__section"
+  style={
+    aboutClass === "aboutPage"
+      ? { marginTop: "0px" }
+      : { marginTop: "10px" } // Adjusted value
+  }
+>
+
       <Container>
         <Row>
           <Col lg="6" md="6">
@@ -45,11 +46,13 @@ const AboutSection = ({ aboutClass }) => {
             </div>
           </Col>
 
-          <Col lg="6" md="6">
-            <div className="about__img">
-              <img src={aboutImg} alt="" className="w-100" />
+          <Col lg="6" md="6" sm="12">
+            <div className="about__page-img">
+              <img src={aboutImg} alt="" className="w-100 rounded-3" />
             </div>
           </Col>
+
+          
         </Row>
       </Container>
     </section>

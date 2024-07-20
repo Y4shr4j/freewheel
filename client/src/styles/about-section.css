@@ -3,9 +3,14 @@
 }
 
 .about__section-item p i {
-  color: #159c34;
+  color: blue;
   font-size: 1.1rem;
 }
+.about__section {
+  margin-top: 10px; /* Adjust this value as needed */
+  padding-top: 20px; /* Optional: add padding if necessary */
+}
+
 
 @media only screen and (max-width: 992px) {
   .about__section-content h2 {

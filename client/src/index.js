@@ -12,16 +12,22 @@ import { SearchProvider } from "./context/search";
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import 'antd/dist/reset.css';
+import ErrorBoundary from "antd/es/alert/ErrorBoundary";
+import { Toaster } from 'react-hot-toast';
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
+    <Toaster />
     <AuthProvider>
       <SearchProvider>
         <CartProvider>
+          <ErrorBoundary>
           <Router>
             <App />
           </Router>
+          </ErrorBoundary>
         </CartProvider>
       </SearchProvider>
     </AuthProvider>

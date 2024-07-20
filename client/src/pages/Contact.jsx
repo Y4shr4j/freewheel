@@ -41,7 +41,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/v1/contact', {
+      const response = await fetch('https://freewheel-emmm.onrender.com/api/v1/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

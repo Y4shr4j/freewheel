@@ -23,7 +23,7 @@ const CreateProduct = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get("https://freewheel-emmm.onrender.com/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -51,7 +51,7 @@ const CreateProduct = () => {
       productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.post(
-        "/api/v1/product/create-product",
+        "https://freewheel-emmm.onrender.com/api/v1/product/create-product",
         productData
       );
       if (data?.success) {
@@ -179,8 +179,8 @@ const CreateProduct = () => {
               className="form-select mb-3"
               onChange={(value) => setBooking(value)}
             >
-              <Option value="0">No</Option>
-              <Option value="1">Yes</Option>
+              <Option value="0">Rent</Option>
+              <Option value="1">Sell</Option>
             </Select>
           </div>
           <div className="mb-3">

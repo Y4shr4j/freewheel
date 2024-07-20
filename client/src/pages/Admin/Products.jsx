@@ -10,7 +10,7 @@ const Products = () => {
   // Get all products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/get-product");
+      const { data } = await axios.get("https://freewheel-emmm.onrender.com/api/v1/product/get-product");
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -37,7 +37,7 @@ const Products = () => {
                 <Link to={`/dashboard/admin/product/${p.slug}`} className="product-link">
                   <div className="card m-2 shadow-sm">
                     <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
+                      src={`https://freewheel-emmm.onrender.com/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       style={{ height: "200px", objectFit: "cover" }}

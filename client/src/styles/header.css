@@ -1,6 +1,6 @@
 .header__top {
   padding: 10px 0px;
-  background: green;
+  background: white;
   color: red;
   
 }
@@ -22,7 +22,7 @@
 }
 
 .header__top__help i {
-  background: black;
+  background: blue;
   color: white;
   padding: 2px 4px;
   border-radius: 50px;
@@ -59,7 +59,7 @@
 .logo h1 a {
   text-decoration: none;
   color: white;
-  font-weight: 700;
+  /* //font-weight: 700; */
 }
 
 .logo h1 {
@@ -73,16 +73,14 @@
 
 .header__location-content h4 {
   font-size: 1.2rem;
-  font-weight: 700;
+  /* //font-weight: 700; */
   color: white;
 }
 
-.header__location-content h6 {
-  font-weight: 600;
-}
+
 
 .header__btn {
-  background: green !important;
+  background: white !important;
   padding: 10px 20px;
   border: none;
   outline: none;
@@ -90,7 +88,7 @@
 }
 
 .pp {
-  color: green;
+  color: white;
 }
 
 .header__btn a {
@@ -111,7 +109,7 @@
 
 .main__navbar {
   padding: 15px 0px;
-  background:black;
+  background:blue;
   
 }
 
@@ -132,13 +130,13 @@
 }
 
 .nav__item {
-  color: green;
+  color: white;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .nav__item:hover {
-  color: green;
+  color: white;
 }
 
 /* .search__box {
@@ -167,9 +165,8 @@
 } */
 
 .nav__active {
-  color: green;
+  color: white;
 }
-
 @media only screen and (max-width: 768px) {
   .header__top,
   .header__middle,
@@ -179,10 +176,16 @@
 
   .mobile__menu {
     display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 1rem; /* Adjust as needed */
+    top: -0.5rem; /* Adjust as needed */
+    z-index: 10000; /* Ensure it is on top */
   }
 
   .navigation {
-    background: white;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
     width: 100%;
     height: 100%;
     position: fixed;
@@ -190,26 +193,31 @@
     left: 0;
     z-index: 9999;
     display: none;
+    justify-content: center;
+    align-items: center;
   }
 
   .menu {
-    width: 250px;
-    height: 100%;
-    background: black;
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    background: blue;
     display: flex;
     align-items: center;
     flex-direction: column;
-    row-gap: 2rem;
-    justify-content: center;
+    padding: 2rem 0;
+    row-gap: 1.5rem;
+    border-radius: 10px;
   }
 
   .menu a {
     color: white;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    text-decoration: none;
   }
 
   .menu__active {
-    display: block;
+    display: flex;
   }
 }

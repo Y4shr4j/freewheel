@@ -9,7 +9,7 @@ const AdminMessages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch('/api/v1/contact');
+        const response = await fetch('https://freewheel-emmm.onrender.com/api/v1/contact');
         const data = await response.json();
         setMessages(data);
       } catch (error) {

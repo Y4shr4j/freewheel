@@ -12,23 +12,23 @@ const ManageUsers = () => {
   const [updatedName, setUpdatedName] = useState('');
 
   // Fetch all users
-  const getAllUsers = async () => {
-    try {
-      const { data } = await axios.get('/api/v1/users/get-users');
-      console.log('API response:', data); // Log API response
-      if (data.success) {
-        // Filter users with role 0
-        // const nonAdminUsers = data.users.filter(user => user.role === 0);
-        // setUsers(nonAdminUsers);
-        // console.log('Non-admin Users set:', nonAdminUsers);
-        setUsers(data.users);
-        console.log('Users set:', data.users); // Log the users data
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error('Something went wrong in fetching users');
+  // Fetch all users
+const getAllUsers = async () => {
+  try {
+    const { data } = await axios.get('https://freewheel-emmm.onrender.com/api/v1/users/get-users');
+    console.log('API response:', data); // Log API response
+    if (data.success) {
+      // Filter users with role 0
+      const nonAdminUsers = data.users.filter(user => user.role === 0);
+      setUsers(nonAdminUsers);
+      console.log('Non-admin Users set:', nonAdminUsers); // Log the non-admin users data
     }
-  };
+  } catch (error) {
+    console.log(error);
+    toast.error('Something went wrong in fetching users');
+  }
+};
+
 
   useEffect(() => {
     getAllUsers();
@@ -38,7 +38,7 @@ const ManageUsers = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`/api/v1/users/update-user/${selectedUser._id}`, {
+      const { data } = await axios.put(`https://freewheel-emmm.onrender.com/api/v1/users/update-user/${selectedUser._id}`, {
         name: updatedName,
       });
       if (data.success) {
@@ -58,7 +58,7 @@ const ManageUsers = () => {
   // Delete user
   const handleDelete = async (userId) => {
     try {
-      const { data } = await axios.delete(`/api/v1/users/delete-user/${userId}`);
+      const { data } = await axios.delete(`https://freewheel-emmm.onrender.com/api/v1/users/delete-user/${userId}`);
       if (data.success) {
         toast.success('User is deleted');
         getAllUsers();

@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-// import "../styles/signup.css"; // Assuming you have some styles defined in this file
+import "../styles/login.css"; // Import the CSS file
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ function Signup() {
     }
 
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/auth/register", { name, email, password, phone, address });
+      const res = await axios.post("https://freewheel-emmm.onrender.com/api/v1/auth/register", { name, email, password, phone, address });
       if (res && res.data.success) {
         toast.success(res.data.message);
         navigate("/login");

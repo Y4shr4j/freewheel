@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/find-car-form.css";
-import '../../styles/productList.css'; // Custom CSS file
+import "../../styles/productList.css";
 import SearchInput from "../Form/SearchInput";
 
 function ProductList() {
@@ -11,7 +11,7 @@ function ProductList() {
 
   const handleFindClick = async () => {
     try {
-      const response = await fetch(`api/v1/product/search?startDate=${startDate}&endDate=${endDate}`);
+      const response = await fetch(`https://freewheel-emmm.onrender.com/api/v1/product/search?startDate=${startDate}&endDate=${endDate}`);
       const data = await response.json();
       setFilteredProducts(data);
     } catch (error) {
@@ -21,13 +21,11 @@ function ProductList() {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4" >
-        Enter Dates and Find Available Products
-      </h2>
+      <h2 className="text-center mb-4">Enter Dates and Find Available Products</h2>
 
-      <div className="form-group row mb-3">
-        <label className="col-sm-2 col-form-label">Start Date:</label>
-        <div className="col-sm-3">
+      <div className="form-group form__row">
+        <div className="form__group">
+          <label className="col-form-label">Start Date:</label>
           <input
             type="date"
             className="form-control rounded"
@@ -35,8 +33,8 @@ function ProductList() {
             onChange={(e) => setStartDate(e.target.value)}
           />
         </div>
-        <label className="col-sm-2 col-form-label">End Date:</label>
-        <div className="col-sm-3">
+        <div className="form__group">
+          <label className="col-form-label">End Date:</label>
           <input
             type="date"
             className="form-control rounded"
@@ -44,8 +42,8 @@ function ProductList() {
             onChange={(e) => setEndDate(e.target.value)}
           />
         </div>
-        <div className="col-sm-2 d-flex align-items-center">
-          <button className="btn btn-primary w-100 rounded" onClick={handleFindClick}>
+        <div className="form__group">
+          <button className="btn btn-primary find__car-btn" onClick={handleFindClick}>
             Find
           </button>
         </div>
@@ -55,16 +53,17 @@ function ProductList() {
 
       <h2 className="text-center mt-5">Products Available in Range</h2>
 
-      
       <div className="row mt-4">
         {filteredProducts.length > 0 ? (
           filteredProducts.map(p => (
-            <div className="col-md-4 mb-4" key={p._id}>
+            <div className="col-md-6 col-lg-4 mb-4" key={p._id}>
               <div className="card h-100 rounded">
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{p.name}</h5>
                   <p className="card-text">Price: ₹{p.price}</p>
-                  <Link to={`/product/${p.slug}`} className="btn btn-primary mt-auto rounded">Check Out</Link>
+                  <Link to={`/product/${p.slug}`} className="btn btn-primary mt-auto rounded">
+                    Check Out
+                  </Link>
                 </div>
               </div>
             </div>

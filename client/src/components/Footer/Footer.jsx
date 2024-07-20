@@ -43,7 +43,7 @@ const Footer = () => {
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <i class="ri-bike-line"></i>
                   <span>
-                    FreeWheel<br /> Rental
+                    YashRa4j
                   </span>
                 </Link>
               </h1>

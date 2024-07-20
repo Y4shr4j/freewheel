@@ -1,20 +1,25 @@
-.find__cars-left {
-  background: url("../assets/all-images/bike2.png");
-  background-position: center;
-  /* background-repeat: no-repeat; */
-  background-size: cover;
-  padding: 100px 40px;
+.find__car-form {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: white;
+  margin-top: -120px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
-.find__cars-left h2 {
-  color:#7af926;
-  font-weight: 600;
-  font-size: 2.8rem;
+.form__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .form__group {
-  width: 30%;
-  margin-bottom: 0;
+  flex: 1;
+  min-width: 150px;
 }
 
 .form__group input {
@@ -22,134 +27,62 @@
   padding: 8px 12px;
   width: 100%;
   outline: none;
-}
-.form__group input::placeholder {
-  color: #000000;
-}
-
-.form {
-  background: #fff;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.select__group {
-  width: 30%;
-}
-
-.select__group select {
-  width: 100%;
-  padding: 10px 15px;
-  border: 1px solid #7c8a972a;
-  outline: none;
-  color: #7c8a97;
-}
-
-
-.hero__slider-section {
-  position: relative;
-  /* z-index: 10; */
-  min-height: 500px; 
-  margin-bottom: 200px;
-  border-radius: 15px;
-}
-
-.hero__form {
-  position: absolute;
-  border-radius: 15px;
-  margin-top: -130px; 
-  margin-bottom: 20px;
-  z-index: 11;
-  width: 100%;
-}
-
-
-.form__row {
-  background: #fff;
-  box-shadow: 5px 5px 15px -5px #e0e9f1;
-}
-
-.journey__time::before {
-  content: "Journey time";
-  margin-right: 0.8rem;
-  color: #7c8a97;
+  border-radius: 5px;
 }
 
 .find__car-btn {
   background: #000d6b !important;
   color: #fff !important;
-  padding: 8px 15px;
-  width: 100%;
+  padding: 6px 12px; /* Smaller button size */
   border: none;
   outline: none;
+  border-radius: 5px;
+  min-width: 100px;
+  margin-top: 37px; /* Adjust to align vertically */
 }
 
-@media only screen and (max-width: 992px) {
-  .find__cars-left {
-    padding: 65px 22px;
 
-  }
 
-  .find__cars-left h2 {
-    font-size: 1.5rem;
-  }
-
-  .form {
-    padding: 30px 10px;
-  }
-
-  .form__group input,
-  .select__group select {
-    padding: 7px 10px;
-    font-size: 0.8rem;
-  }
-
-  .hero__form {
-    bottom: -100px;
-  }
+.form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px; 
 }
+
+.form__group {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column; /* Ensure labels and inputs stack */
+}
+
 
 @media only screen and (max-width: 768px) {
-  .find__cars-left {
-    padding-top: 20px;
-    padding-bottom: 0;
-    background: #fff;
-    text-align: center;
+  .find__car-form {
+    margin-top: -30px;
   }
 
-  .form {
-    padding: 20px 10px;
+  .form__row {
+    flex-direction: row; /* Ensure items are in the same row */
+    gap: 5px; /* Reduce gap for compact layout */
   }
-}
 
-@media only screen and (max-width: 576px) {
   .form__group {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 15px;
+    flex: 1;
+    min-width: 70px; /* Adjust for smaller screens */
   }
 
   .form__group input {
-    font-size: 0.7rem !important;
-  }
-
-  .select__group {
-    width: 100%;
-    padding-right: 10px;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+    padding: 6px 10px;
   }
 
   .find__car-btn {
-    font-size: 0.8rem;
-  }
-
-  .find__cars-left h2 {
-    font-size: 1rem;
-  }
-
-  .hero__form {
-    bottom: -250px;
+    font-size: 0.9rem;
+    padding: 6px 10px;
   }
 }

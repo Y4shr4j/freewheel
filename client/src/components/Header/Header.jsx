@@ -47,65 +47,22 @@ const Header = () => {
 
   return (
     <header className="header">
-    
-      {/* =============== header middle =========== */}
-      <div className="main__navbar">
-        <Container>
-          <Row>
-            <Col lg="4" md="3" sm="4">
-              <div className="logo">
-                <h1>
-                  <Link to="/home" className=" d-flex align-items-center gap-2">
-                    <i class="ri-bike-line"></i>
-                    <span>
-                      FreeWheel <br /> Rentals
-                    </span>
-                  </Link>
-                </h1>
-              </div>
-            </Col>
-
-            <Col lg="3" md="3" sm="4">
-              <div className="header__location d-flex align-items-center gap-2">
+    <div className="main__navbar">
+    <Container>
+      <Row className="d-flex align-items-center justify-content-between">
+        <Col lg="4" md="3" sm="4">
+          <div className="logo">
+            <h1>
+              <Link to="/home" className="d-flex align-items-center gap-2">
+                <i class="ri-bike-line"></i>
                 <span>
-                  <i class="ri-earth-line"></i>
+                  YashRa4j
                 </span>
-                <div className="header__location-content">
-                  <h4>India</h4>
-                  <h4>Silchar City, India</h4>
-                </div>
-              </div>
-            </Col>
-
-            <Col lg="3" md="3" sm="4">
-              <div className="header__location d-flex align-items-center gap-2">
-                <span>
-                  <i class="ri-time-line"></i>
-                </span>
-                <div className="header__location-content">
-                  <h4>Sunday to Saturday</h4>
-                  <h4>10am - 7pm</h4>
-                </div>
-              </div>
-            </Col>
-
-            <Col lg="2" md="3" sm="0" className=" d-flex align-items-center justify-content-end ">
-              <button className="header__btn btn ">
-                <Link to="/contact">
-                  <i class="ri-phone-line"></i> Request a call
-                </Link>
-              </button>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
-      
-
-      {/* ========== main navigation =========== */}
-
-      <div className="main__navbar">
-        <Container>
+              </Link>
+            </h1>
+          </div>
+        </Col>
+        <Col lg="4" md="6" sm="4" className="d-flex justify-content-center">
           <div className="navigation__wrapper d-flex align-items-center justify-content-between">
             <span className="mobile__menu">
               <i class="ri-menu-line" onClick={toggleMenu}></i>
@@ -124,44 +81,45 @@ const Header = () => {
                   </NavLink>
                 ))}
               </div>
-            </div>            
-            <Col lg="6" md="6" sm="6">
-              <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-
-                {   
-                  !auth.user ? (
-                    <>
-                      <Link to="/login" className=" d-flex align-items-center gap-1">
-                        <i class="ri-login-circle-line"></i> Login
-                      </Link>
-                      <Link to="/signup" className=" d-flex align-items-center gap-1">
-                        <i class="ri-user-line"></i> Register
-                      </Link>
-                    </>) : (
-                    <>
-                      <div className="pp">
-                        {auth?.user?.name}
-                      </div>
-                      <Link to={`/dashboard/${auth?.user?.role === 1? 'admin' : 'user'}`} className="d-flex align-items-center gap-1">
-                        Dashboard
-                      </Link>
-                      <Badge count={cart?.length} showZero>
-                        <Link to="/cart" className="nav-link">
-                          <i class="ri-shopping-cart-line"></i>Cart    
-                        </Link>
-                      </Badge>
-                      
-                      <Link to="/login" onClick={handleLogout} className=" d-flex align-items-center gap-1">
-                        <i class="ri-login-circle-line"></i> LogOut
-                      </Link>
-                    </>
-                  )
-                }
-              </div>
-            </Col>
+            </div>
           </div>
-        </Container>
-      </div>
+        </Col>
+        <Col lg="4" md="3" sm="4">
+          <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+            {!auth.user ? (
+              <>
+                <Link to="/login" className="d-flex align-items-center gap-1">
+                  <i class="ri-login-circle-line"></i> Login
+                </Link>
+                <Link to="/signup" className="d-flex align-items-center gap-1">
+                  <i class="ri-user-line"></i> Register
+                </Link>
+              </>
+            ) : (
+              <>
+                <div className="pp">{auth?.user?.name}</div>
+                <Link
+                  to={`/dashboard/${auth?.user?.role === 1 ? 'admin' : 'user'}`}
+                  className="d-flex align-items-center gap-1"
+                >
+                  Dashboard
+                </Link>
+                <Badge count={cart?.length} showZero>
+                  <Link to="/cart" className="nav-link">
+                    <i class="ri-shopping-cart-line"></i> Cart
+                  </Link>
+                </Badge>
+                <Link to="/login" onClick={handleLogout} className="d-flex align-items-center gap-1">
+                  <i class="ri-login-circle-line"></i> LogOut
+                </Link>
+              </>
+            )}
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  </div>
+
     </header>
   );
 };
